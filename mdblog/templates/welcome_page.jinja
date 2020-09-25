@@ -1,36 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "_main.jinja" %}
 
-<head>
-    <title> Welcome to Markdown blog </title>
-    <link rel="stylesheet" type="text/css" href={{url_for("static", filename="css/main.css")}}>
-</head>
+{% block title %} Welcome to Markdown blog {% endblock %}
 
-<body>
-<header>
-    <h1> Václav Vacek </h1>
-</header>  
+{% block main %}
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
+Integer pellentesque quam vel velit. Phasellus et lorem id felis nonummy placerat. 
+Phasellus enim erat, vestibulum vel, aliquam a, posuere eu, velit. Sed vel lectus. 
+Donec odio tempus molestie, porttitor ut, iaculis quis, sem.
+{% endblock %}
 
-<nav>
-    <ul class=nav>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Articles</a></li>
-        <li><a href="#">Admin</a></li>
-    </ul>
-</nav>
 
-<main>
-    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Vivamus luctus egestas leo. Curabitur sagittis hendrerit ante. 
-    Etiam egestas wisi a erat. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, 
-    sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. 
-    Et harum quidem rerum facilis est et expedita distinctio. In convallis. Nullam faucibus mi quis velit.
-</main>
 
-<footer>
-    <p>
-        (c) 2020 Václav Vacek
-    </p>
-</footer>
-</body>
-
-</html>
