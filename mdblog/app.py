@@ -5,6 +5,7 @@ from flask import redirect
 from flask import url_for
 from flask import session
 from flask import g
+from flask import flash
 
 import sqlite3
 import os
@@ -27,6 +28,7 @@ def view_about():
 @flask_app.route("/admin/")
 def view_admin():
     if "logged" not in session:
+        flash("You must be logged in", "alert-danger")
         return redirect(url_for("view_login"))
     return render_template("admin.jinja")
 
@@ -43,9 +45,10 @@ def add_article():
     db.execute("insert into articles (title, content) values (?, ?)",
         [request.form.get("title"), request.form.get("content")])
     db.commit()
+    flash("Article was saved", "alert-succes")
     return redirect(url_for("view_articles")) 
 
-@flask_app.route("/articles/<int:art_id>")
+@flask_app.route("/articles/<int:art_id>/")
 def view_article(art_id):
     db = get_db()
     cur = db.execute("select * from articles where id=(?)", [art_id])
@@ -64,13 +67,16 @@ def login_user():
     password = request.form["password"]
     if username == flask_app.config["USERNAME"] and password == flask_app.config["PASSWORD"]:
         session["logged"] = True
+        flash("Login succesful", "alert-succes")
         return redirect(url_for("view_admin"))
     else:
+        flash("Invalid credentials", "alert-danger")
         return redirect(url_for("view_login"))
 
 @flask_app.route("/logout/", methods=["POST"])
 def logout_user():
     session.pop("logged")
+    flash("Loggout succesful", "alert-succes")
     return redirect(url_for("view_welcome_page"))
 
 ## UTILS
@@ -82,7 +88,7 @@ def connect_db():
 def get_db():
     if not hasattr(g, "sqlite_db"):
         g.sqlite_db = connect_db()
-        return g.sqlite_db
+    return g.sqlite_db
 
 @flask_app.teardown_appcontext
 def close_db(error):
