@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
@@ -8,18 +8,18 @@
 
 {% with messages = get_flashed_messages(with_categories=True) %}
     {% if messages %}
-        <ul class = "flashes">
+        <ul class="flashes">
         {% for category, message in messages %}
             <li class="{{ category }}"> {{ message }} </li>
-        {% endfor %}         
+        {% endfor %}
         </ul>
     {% endif %}
 {% endwith %}
 
 <body>
 <header>
-    <h1> <a href="{{url_for("view_welcome_page")}}"> Václav Vacek </a></h1>
-</header>  
+    <h1> <a href="{{ url_for("view_welcome_page") }}"> Václav Vacek </a></h1>
+</header>
 
 {% include "_nav.jinja" %}
 
@@ -27,9 +27,6 @@
     {% block main %} {% endblock %}
 </main>
 
-<footer>
-    {% include "_footer.jinja" %}  
-</footer>
+{% include "_footer.jinja" %}
 </body>
-
 </html>

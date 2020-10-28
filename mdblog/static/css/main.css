@@ -1,17 +1,20 @@
 body {
     padding: 0 20%;
 }
+
 header {
     text-align: center;
 }
+
 .nav {
     padding: 0;
-    list-style: name;
+    list-style: none;
     overflow: hidden;
     text-align: center;
 }
+
 .nav li {
-    display: inline;                
+    display: inline;
 }
 
 .nav a {
@@ -22,7 +25,7 @@ header {
 
 .nav form {
     display: inline-block;
-    padding: 10px;                
+    padding: 10px;
 }
 
 footer {
@@ -47,9 +50,9 @@ footer {
 }
 
 .flashes .alert-danger {
-    background:mistyrose;
+    background: mistyrose;
 }
 
-.flashes .alert-succes {
+.flashes .alert-success {
     background: lightgreen;
 }
